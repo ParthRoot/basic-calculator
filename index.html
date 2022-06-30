@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+
+<body>
+    <script>
+        var flag; // use for validate number
+
+        //validate two number
+        function validateAmount(num1, num2) {
+            let a = /^[0-9.]+$/;
+            if (num1.match(a) & num2.match(a)) {
+                flag = 1;
+            } else {
+                flag = 0;
+                alert("Please enter amount in number");
+            }
+        }
+
+        // calculate sum
+        let sum = (num1, num2) => {
+            num1 = parseFloat(num1);
+            num2 = parseFloat(num2);
+            let sumAmount = num1 + num2;
+            return sumAmount;
+        }
+
+        // calculate substraction
+        let sub = (num1, num2) => {
+            num1 = parseFloat(num1);
+            num2 = parseFloat(num2);
+            let subAmount = num1 - num2;
+            return subAmount;
+        }
+
+        // calculate multiplication
+        let mul = (num1, num2) => {
+            num1 = parseFloat(num1);
+            num2 = parseFloat(num2);
+            let mulAmount = num1 * num2;
+            return mulAmount;
+        }
+
+        // calculate division
+        let div = (num1, num2) => {
+            num1 = parseFloat(num1);
+            num2 = parseFloat(num2);
+            let divAmount = num1 / num2;
+            return divAmount;
+        }
+
+        //numbers entered by user
+        let num1 = prompt("Enter the Number 1");
+        let num2 = prompt("Enter the Number 2");
+
+        validateAmount(num1, num2, flag);
+
+        if (flag == 1) {
+            // operation selected by user
+            let operations = prompt("Select Operations +, -, *, /, =");
+            switch (operations) {
+                case "+":
+                    alert(`${num1} + ${num2} = ${sum(num1, num2)}`);
+                    break;
+
+                case "-":
+                    alert(`${num1} - ${num2} = ${sub(num1, num2)}`);
+                    break;
+
+                case "*":
+                    alert(`${num1} * ${num2} = ${mul(num1, num2)}`);
+                    break;
+
+                case "/":
+                    alert(`${num1} / ${num2} = ${div(num1, num2)}`);
+                    break;
+
+                default:
+                    alert("Please Select Valid Operation");
+            }
+
+        }
+
+        /*
+            Test Cases
+    
+            Addition
+    
+            1) "-" + "-" = "-" -> -2 + -4 = -6
+    
+            2) "+" + "+" = "+" -> 5 + 4 = 9
+    
+            3) if "+" > "-":
+               "+" + "-" = "+" -> 6 + -2 = 4
+    
+            4) if "+" < "-" 
+               "+" + "-" = "-" -> -10 + 3 = -7
+    
+            Substraction
+    
+            5) "-" - "-" = "+" -> -2 - (-4) = 2
+    
+            6) "+" - "+" = "+" or "-" -> 
+                5 - 4 = 1
+                6 - 8 = -2
+    
+            7) if "+" > "-": ->
+                 8 - (-3) = 11
+                -3 - 8 = -11
+    
+            8) if "+" < "-"  -> 
+                -10 - 4 = -14
+                -4 - 10 = 14
+    
+            Multiplication
+    
+            9) if "+" * "+" = "+" -> 2 * 4 = 8
+    
+            10) if "-" * "-" = "+" -> -2 * -4 = 8
+    
+            11) if "+" > "-":
+                "+" * "-" or "-" * "+":
+                5 * -2 = -10
+                -5 * 3 = -15
+    
+            12) if "+" < "-":
+                "+" * "-" or "-" * "+":
+                -4 * 2 = -8
+                2 * -4 = -8
+    
+            Division
+    
+            13) "+" / "+" = "+" => 25 / 3 = 8.33
+    
+            14) "-" / "-" = "-" => -16 / -3 = 5.33
+    
+            15) if "+" > "-":
+                "+" / "-" = "-" -> 5 / -2 = -2.5
+                "-" / "+" = "-" -> -2 / 5 = -0.4
+    
+            16) if "-" > "+":
+                "+" / "-" = "-" -> 4 / -12 = -0.33
+                "-" / "+" = "-" -> -18 / 7 = -2.57
+    
+        */
+    </script>
+</body>
+
+</html>
